@@ -4,8 +4,6 @@
 
 #include "Tank.h"
 
-// TODO ÏÎÂÎĞÎÒ
-
 bool Tank::isDead() const
 {
 	return _isDead;
@@ -24,6 +22,26 @@ int Tank::getDamage() const
 int Tank::getHealth() const
 {
 	return _health;
+}
+
+sf::Vector2f Tank::getOrigin() const
+{
+	return _sprite.getOrigin();
+}
+
+double Tank::getBaseAngle() const
+{
+	return _baseAngle;
+}
+
+double Tank::getBaseMovementSpeed() const
+{
+	return _baseMovementSpeed;
+}
+
+sf::FloatRect Tank::getGlobalBounds() const
+{
+	return _sprite.getGlobalBounds();
 }
 
 Tank::Tank(const TypeTank type,
@@ -47,11 +65,15 @@ void Tank::onDamage(int damage)
 	if (_health - damage <= 0)
 	{
 		if (_lives > 1)
+		{
 			_health = 5;
+		}
 		_lives--;
 	}
 	else
+	{
 		_health -= damage;
+	}
 
 	_isDead = _lives <= 0;
 }
@@ -95,7 +117,7 @@ void Tank::initializeTexture()
 void Tank::initializeSprite()
 {
 	_sprite.setTexture(_texture);
-	_sprite.scale(sf::Vector2f(1.2f, 1.2f));
+	_sprite.scale(sf::Vector2f(1.1f, 1.1f));
 	_sprite.setOrigin(27, 39.5);
 }
 
@@ -106,7 +128,7 @@ void Tank::render(sf::RenderWindow* window) const
 
 void Tank::updateDirect()
 {
-	const double angel = (_sprite.getRotation()) * M_PI / 180;
+	const auto angel = (_sprite.getRotation()) * M_PI / 180;
 	setDirect(sf::Vector2f(sin(angel), cos(angel)));
 }
 
@@ -155,9 +177,14 @@ void Tank::setSprite(sf::Sprite sprite)
 	_sprite = sprite;
 }
 
-void Tank::setPositionSprite(const sf::VideoMode vm)
+sf::Vector2f Tank::getPositionSprite() const
 {
-	_sprite.setPosition(vm.width, vm.height);
+	return _sprite.getPosition();
+}
+
+void Tank::setPositionSprite(const float x, const float y)
+{
+	_sprite.setPosition(x, y);
 }
 
 void Tank::move(const double x, const double y, float dt)

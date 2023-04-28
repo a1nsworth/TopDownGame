@@ -19,15 +19,25 @@
 
 class TwoPlayerInputController
 {
+private:
+	bool _isMovingUp = false;
+	bool _isMovingDown = false;
+	bool _isMovingLeft = false;
+	bool _isMovingRight = false;
+
+	bool _isCollised = false;
+
+	void resetMoving();
+
 public:
 	Tank* player1;
 	Tank* player2;
 
 	TwoPlayerInputController(Tank* player1, Tank* player2);
 
-	void keyProcess(Tank* player, float dt) const;
+	void keyProcess(Tank* playerToMove, Tank* playerCanBeCollision, float dt);
 
-	void keysProcessing(float dt) const;
+	void keysProcessing(float dt);
 };
 
 #endif //_PLAYERINPUTCONTROLLER_H_

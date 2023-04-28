@@ -36,8 +36,11 @@ private:
 	bool _isDead;
 	TypeTank _type;
 
+	double _baseMovementSpeed = 100000;
+	double _baseAngle = 200000;
 	double _movementSpeed = 100000;
 	double _angle = 200000;
+
 
 	sf::Texture _texture;
 	sf::Sprite _sprite;
@@ -53,15 +56,23 @@ public:
 
 	int getHealth() const;
 
+	sf::Vector2f getOrigin() const;
+
+	double getBaseAngle() const;
+
+	double getBaseMovementSpeed() const;
+
+	sf::FloatRect getGlobalBounds() const;
+
 	TypeTank getType() const;
 
 	double getMovementSpeed() const;
 
-	void setMovementSpeed(const double speed);
+	void setMovementSpeed(double speed);
 
 	double getAngle() const;
 
-	void setAngle(const double angle);
+	void setAngle(double angle);
 
 	sf::Texture getTexture() const;
 
@@ -71,7 +82,9 @@ public:
 
 	void setSprite(sf::Sprite sprite);
 
-	void setPositionSprite(const sf::VideoMode vm);
+	sf::Vector2f getPositionSprite() const;
+
+	void setPositionSprite(float x, float y);
 
 	void onDamage(int damage);
 

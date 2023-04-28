@@ -37,108 +37,20 @@ enum Wall
 class BackGround
 {
 private:
-	std::vector<std::vector<char>> MAP =
-	{
-		{
-			Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue,
-			Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue,
-			Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, 'T',
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1, Ground::Earth1,
-			Ground::Earth1, Ground::Earth1,
-			Wall::Blue
-		},
-		{
-			Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue,
-			Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue,
-			Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue, Wall::Blue,
-			Wall::Blue
-		},
+	std::vector<std::vector<char>> MAP = {
+		{Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Ground::Earth1,Ground::Earth1, Wall::Blue},
+		{Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue,Wall::Blue, Wall::Blue},
+
 
 	};
 

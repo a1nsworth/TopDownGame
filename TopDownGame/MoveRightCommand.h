@@ -17,4 +17,3 @@ public:
 };
 
 #endif //_MOVERIGHTCOMMAND_H_
-

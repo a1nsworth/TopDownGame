@@ -4,15 +4,11 @@
 
 #include "Game.h"
 
-
-// TODO разобраться с усправление . В цикле медленнее вне быстрее
-// TODO sf::VideoMode::height
-
 Game* Game::_instance = nullptr;
 
 Game::Game()
 {
-	_window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE, sf::Style::Close);
+	_window = new sf::RenderWindow(_videoMode, TITLE, sf::Style::Close);
 	_window->setFramerateLimit(FPS);
 	_window->setVerticalSyncEnabled(true);
 
@@ -22,8 +18,14 @@ Game::Game()
 	_t2 = new Tank(RedBlack, sf::Keyboard::Key::Left, sf::Keyboard::Key::Right, sf::Keyboard::Key::Up,
 	               sf::Keyboard::Key::Down);
 
-	_t1->setPositionSprite(sf::VideoMode(WIDTH / 4, HEIGHT / 4));
-	_t2->setPositionSprite(sf::VideoMode(WIDTH / 2, HEIGHT / 2));
+	_t1->setPositionSprite(_videoMode.width / 2.f, _videoMode.height / 2.f);
+	_t2->setPositionSprite(_videoMode.width / 4.f, _videoMode.height / 4.f);
+
+	collisionPlayer1AndBorderMap = CollisionPlayerWithBorderMap(
+		_t1, sf::FloatRect(79, 79, _videoMode.width - 79 * 2, _videoMode.height - 79 * 2));
+	collisionPlayer2AndBorderMap = CollisionPlayerWithBorderMap(
+		_t2, sf::FloatRect(79, 79, _videoMode.width - 79 * 2, _videoMode.height - 79 * 2));
+
 	inputController_ = new TwoPlayerInputController(_t1, _t2);
 }
 
@@ -39,6 +41,10 @@ void Game::run()
 
 void Game::update()
 {
+	_t1->update();
+	_t2->update();
+	collisionPlayer1AndBorderMap.update();
+	collisionPlayer2AndBorderMap.update();
 	updateEvents();
 
 	if (!_states.empty())
@@ -61,7 +67,6 @@ void Game::update()
 void Game::updateEvents()
 {
 	sf::Event ev;
-
 	while (_window->pollEvent(ev))
 	{
 		if (ev.type == sf::Event::Closed)

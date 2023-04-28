@@ -5,35 +5,108 @@
 #include "TwoPlayerInputController.h"
 
 
+void TwoPlayerInputController::resetMoving()
+{
+	_isMovingUp = false;
+	_isMovingDown = false;
+	_isMovingLeft = false;
+	_isMovingRight = false;
+}
+
 TwoPlayerInputController::TwoPlayerInputController(Tank* player1, Tank* player2)
 {
 	this->player1 = player1;
 	this->player2 = player2;
 }
 
-void TwoPlayerInputController::keyProcess(Tank* player, const float dt) const
+void TwoPlayerInputController::keyProcess(Tank* playerToMove, Tank* playerCanBeCollision, const float dt)
 {
-	player->updateDirect();
-	if (sf::Keyboard::isKeyPressed(player->keysAssignment.moveUpCommand->getKey()))
+	auto isCollision = playerToMove->getGlobalBounds().intersects(playerCanBeCollision->getGlobalBounds());
+
+	resetMoving();
+
+	if (sf::Keyboard::isKeyPressed(playerToMove->keysAssignment.moveUpCommand->getKey()))
 	{
-		player->keysAssignment.moveUpCommand->execute(player, dt);
+		_isMovingUp = true;
+
+		//playerToMove->keysAssignment.moveUpCommand->execute(playerToMove, dt);
 	}
-	if (sf::Keyboard::isKeyPressed(player->keysAssignment.moveDownCommand->getKey()))
+	if (sf::Keyboard::isKeyPressed(playerToMove->keysAssignment.moveDownCommand->getKey()))
 	{
-		player->keysAssignment.moveDownCommand->execute(player, dt);
+		_isMovingDown = true;
+		///playerToMove->keysAssignment.moveDownCommand->execute(playerToMove, dt);
 	}
-	if (sf::Keyboard::isKeyPressed(player->keysAssignment.moveLeftCommand->getKey()))
+	if (sf::Keyboard::isKeyPressed(playerToMove->keysAssignment.moveLeftCommand->getKey()))
 	{
-		player->keysAssignment.moveLeftCommand->execute(player, dt);
+		_isMovingLeft = true;
+		//playerToMove->keysAssignment.moveLeftCommand->execute(playerToMove, dt);
 	}
-	if (sf::Keyboard::isKeyPressed(player->keysAssignment.moveRightCommand->getKey()))
+	if (sf::Keyboard::isKeyPressed(playerToMove->keysAssignment.moveRightCommand->getKey()))
 	{
-		player->keysAssignment.moveRightCommand->execute(player, dt);
+		_isMovingRight = true;
+		//playerToMove->keysAssignment.moveRightCommand->execute(playerToMove, dt);
+	}
+
+	if (isCollision)
+	{
+		if (_isMovingUp)
+		{
+			if (_isMovingDown)
+			{
+				playerToMove->keysAssignment.moveUpCommand->execute(playerToMove, dt);
+			}
+			else
+			{
+				playerToMove->keysAssignment.moveDownCommand->execute(playerToMove, dt);
+			}
+		}
+		if (_isMovingDown)
+		{
+			if (_isMovingUp)
+			{
+				playerToMove->keysAssignment.moveDownCommand->execute(playerToMove, dt);
+			}
+			else
+			{
+				playerToMove->keysAssignment.moveUpCommand->execute(playerToMove, dt);
+			}
+		}
+		if (_isMovingLeft)
+		{
+			playerToMove->keysAssignment.moveRightCommand->execute(playerToMove, dt);
+		}
+		if (_isMovingRight)
+		{
+			playerToMove->keysAssignment.moveLeftCommand->execute(playerToMove, dt);
+		}
+	
+		_isCollised = true;
+	}
+	else
+	{
+		if (_isMovingUp)
+		{
+			playerToMove->keysAssignment.moveUpCommand->execute(playerToMove, dt);
+		}
+		if (_isMovingDown)
+		{
+			playerToMove->keysAssignment.moveDownCommand->execute(playerToMove, dt);
+		}
+		if (_isMovingLeft)
+		{
+			playerToMove->keysAssignment.moveLeftCommand->execute(playerToMove, dt);
+		}
+		if (_isMovingRight)
+		{
+			playerToMove->keysAssignment.moveRightCommand->execute(playerToMove, dt);
+		}
+	
+		_isCollised = false;
 	}
 }
 
-void TwoPlayerInputController::keysProcessing(const float dt) const
+void TwoPlayerInputController::keysProcessing(const float dt)
 {
-	keyProcess(player1, dt);
-	keyProcess(player2, dt);
+	keyProcess(player1, player2, dt);
+	keyProcess(player2, player1, dt);
 }
